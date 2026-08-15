@@ -1,0 +1,11 @@
+id: local.metriek.05_grote_sprong
+title: "De Grote Sprong"
+order: 5
+level: "advanced"
+status: "published"
+description: "Van km³ naar mm³: de komma verschuift 18 plaatsen! Werk in stappen via m³."
+tags: ["metriek", "inhoud", "grote getallen", "km3", "mm3"]
+learning_objectives:
+  - "Grote omrekeningen in stappen uitvoeren via m³"
+  - "Begrijpen dat km³ → mm³ = ×10¹⁸"
+  - "Wetenschappelijke notatie herkennen"

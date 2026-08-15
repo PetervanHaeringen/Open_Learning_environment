@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Lessen{% endblock %}
+
+{% block content %}
+<h1>📚 Lessenbibliotheek</h1>
+
+{% for item in overview %}
+<div class="card">
+    <h2>{{ item.source.name }}</h2>
+    {% for track in item.tracks %}
+        <h3 style="margin-top: 1rem;">{{ track.name }}</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
+            {% for m in track.modules %}
+            <div style="border: 1px solid var(--border); border-radius: 6px; padding: 1rem;">
+                <div style="font-size: 0.8rem; color: var(--text-soft);">Module {{ m.order }}</div>
+                <strong>{{ m.title }}</strong>
+                <div style="margin-top: 0.5rem;">
+                    <a href="{{ url_for('content.lesson', source_name=item.source.name, track=track.name, module=m.folder) }}" class="btn" style="font-size: 0.85rem;">Open</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+{% endfor %}
+{% endblock %}

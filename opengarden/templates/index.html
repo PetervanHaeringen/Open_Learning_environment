@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Welkom bij OpenGarden{% endblock %}
+
+{% block content %}
+<div style="text-align: center; padding: 3rem 1rem;">
+    <h1 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem;">🌱 OpenGarden</h1>
+    <p style="font-size: 1.2rem; color: var(--text-soft); max-width: 500px; margin: 0 auto 2rem;">
+        Een open-source leerframework. Lesinhoud in YAML en Markdown.
+        Voortgang in SQLite. Vrijheid voor elke school.
+    </p>
+
+    {% if current_role == 'guest' %}
+        <a href="{{ url_for('auth.register') }}" class="btn" style="margin-right: 1rem;">Start hier</a>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-secondary">Inloggen</a>
+    {% else %}
+        <a href="{{ url_for('dashboard.index') }}" class="btn">Ga naar Mijn Tuin</a>
+    {% endif %}
+</div>
+
+<div class="card">
+    <h2>Wat is OpenGarden?</h2>
+    <p>OpenGarden is een lichtgewicht leeromgeving voor scholen en onderwijsinstellingen.</p>
+    <ul>
+        <li><strong>Lesinhoud</strong> in leesbare YAML- en Markdown-bestanden</li>
+        <li><strong>Voortgang</strong> lokaal opgeslagen in SQLite</li>
+        <li><strong>Meertalig</strong> — vertaal je les voor wie het nodig heeft</li>
+        <li><strong>Deelbaar</strong> — lesbibliotheek via Git</li>
+        <li><strong>Vrij</strong> — geen commerciële afhankelijkheid</li>
+    </ul>
+</div>
+{% endblock %}

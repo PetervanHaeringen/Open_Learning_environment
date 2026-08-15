@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}{{ track }} — Overzicht{% endblock %}
+
+{% block content %}
+<h1>🌱 {{ track }}</h1>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
+    {% for m in modules %}
+    <div class="card">
+        <div style="font-size: 0.8rem; color: var(--text-soft);">Module {{ m.order }}</div>
+        <h3 style="margin: 0.3rem 0;">{{ m.title }}</h3>
+        {% if m.level %}
+            <span style="font-size: 0.8rem; color: var(--text-soft);">{{ m.level }}</span>
+        {% endif %}
+        <div style="margin-top: 0.8rem;">
+            <a href="{{ url_for('content.lesson', source_name=source, track=track, module=m.folder) }}" class="btn" style="font-size: 0.85rem;">Open module</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

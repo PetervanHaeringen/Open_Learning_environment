@@ -1,0 +1,53 @@
+questions:
+  - id: q1
+    type: mcq
+    text: "In het getal 4567,89 staat de 5 op de positie van:"
+    options:
+      - id: a
+        text: "de eenheden"
+      - id: b
+        text: "de tientallen"
+      - id: c
+        text: "de honderdtallen"
+      - id: d
+        text: "de duizendtallen"
+    answer: "c"
+
+  - id: q2
+    type: mcq
+    text: "Als je 23,45 vermenigvuldigt met 100, waar komt de komma dan?"
+    options:
+      - id: a
+        text: "Tussen de 2 en de 3"
+      - id: b
+        text: "Achter de 5"
+      - id: c
+        text: "Tussen de 3 en de 4"
+      - id: d
+        text: "Er verandert niets"
+    answer: "b"
+
+  - id: q3
+    type: truefalse
+    text: "De cijfers achter de komma stellen negatieve machten van 10 voor."
+    answer: true
+
+  - id: q4
+    type: mcq
+    text: "Welke macht van 10 hoort bij de honderdsten?"
+    options:
+      - id: a
+        text: "10¹"
+      - id: b
+        text: "10⁻¹"
+      - id: c
+        text: "10⁻²"
+      - id: d
+        text: "10²"
+    answer: "c"
+
+  - id: q5
+    type: open
+    text: "Noem twee dingen die gebeuren met de komma als je een getal deelt door 1000."
+    keywords: ["links", "3", "drie"]
+    min_keywords: 2

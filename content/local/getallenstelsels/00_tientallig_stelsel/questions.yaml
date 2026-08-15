@@ -1,0 +1,53 @@
+questions:
+  - id: q1
+    type: mcq
+    text: "Waarom gebruiken wij waarschijnlijk een tientallig stelsel?"
+    options:
+      - id: a
+        text: "Omdat 10 het beste getal is"
+      - id: b
+        text: "Omdat we 10 vingers hebben"
+      - id: c
+        text: "Omdat het de enige mogelijkheid is"
+      - id: d
+        text: "Omdat de Romeinen dat bedachten"
+    answer: "b"
+
+  - id: q2
+    type: mcq
+    text: "In het getal 4567,89 staat de 5 op de positie van:"
+    options:
+      - id: a
+        text: "de eenheden"
+      - id: b
+        text: "de tientallen"
+      - id: c
+        text: "de honderdtallen"
+      - id: d
+        text: "de duizendtallen"
+    answer: "c"
+
+  - id: q3
+    type: truefalse
+    text: "De cijfers achter de komma stellen negatieve machten van 10 voor."
+    answer: true
+
+  - id: q4
+    type: mcq
+    text: "Als je 23,45 vermenigvuldigt met 100, waar komt de komma dan?"
+    options:
+      - id: a
+        text: "Tussen de 2 en de 3"
+      - id: b
+        text: "Achter de 5"
+      - id: c
+        text: "Tussen de 3 en de 4"
+      - id: d
+        text: "Er verandert niets"
+    answer: "b"
+
+  - id: q5
+    type: open
+    text: "Leg uit waarom het handig is dat we een positiestelsel gebruiken in plaats van bijvoorbeeld Romeinse cijfers."
+    keywords: ["plaats", "waarde", "macht", "10", "rekenen", "makkelijk"]
+    min_keywords: 2

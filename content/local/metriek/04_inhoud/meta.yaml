@@ -1,0 +1,11 @@
+id: local.metriek.04_inhoud
+title: "Inhoud omrekenen"
+order: 4
+level: "intermediate"
+status: "published"
+description: "Leer inhoud-eenheden omrekenen. De komma verschuift 3 plaatsen per trede."
+tags: ["metriek", "inhoud", "3D"]
+learning_objectives:
+  - "Begrijpen dat inhoud = lengte × lengte × lengte"
+  - "De komma 3, 6 of 9 plaatsen verschuiven bij inhoud"
+  - "Van m³ naar cm³ en van dm³ naar mm³ rekenen"

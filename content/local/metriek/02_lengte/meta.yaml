@@ -1,0 +1,11 @@
+id: local.metriek.02_lengte
+title: "Lengte omrekenen"
+order: 2
+level: "beginner"
+status: "published"
+description: "Leer lengte-eenheden omrekenen met de metrische ladder."
+tags: ["metriek", "lengte", "eenheden"]
+learning_objectives:
+  - "De metrische ladder voor lengte kennen"
+  - "De komma 1, 2 of 3 plaatsen verschuiven bij lengte"
+  - "Van km naar m en van m naar mm rekenen"

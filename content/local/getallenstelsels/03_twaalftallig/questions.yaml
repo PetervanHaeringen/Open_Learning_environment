@@ -1,0 +1,53 @@
+questions:
+  - id: q1
+    type: mcq
+    text: "Hoeveel zitten er in een gros?"
+    options:
+      - id: a
+        text: "12"
+      - id: b
+        text: "100"
+      - id: c
+        text: "144"
+      - id: d
+        text: "24"
+    answer: "c"
+
+  - id: q2
+    type: mcq
+    text: "Welk getal is GEEN deler van 12?"
+    options:
+      - id: a
+        text: "2"
+      - id: b
+        text: "3"
+      - id: c
+        text: "4"
+      - id: d
+        text: "5"
+    answer: "d"
+
+  - id: q3
+    type: truefalse
+    text: "Er zitten 12 maanden in een jaar omdat 12 zo goed deelbaar is."
+    answer: true
+
+  - id: q4
+    type: mcq
+    text: "Hoeveel dozijn eieren zijn 3 gros?"
+    options:
+      - id: a
+        text: "12 dozijn"
+      - id: b
+        text: "24 dozijn"
+      - id: c
+        text: "36 dozijn"
+      - id: d
+        text: "144 dozijn"
+    answer: "a"
+
+  - id: q5
+    type: open
+    text: "Noem twee redenen waarom 12 een handiger getal is dan 10 voor het verdelen van hoeveelheden."
+    keywords: ["delers", "2", "3", "4", "6", "deelbaar", "verdelen"]
+    min_keywords: 2

@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block title %}{{ lesson.meta.title }}{% endblock %}
+
+{% block content %}
+<nav style="margin-bottom: 1rem; font-size: 0.9rem;">
+    <a href="{{ url_for('content.index') }}">Lessen</a> /
+    <a href="{{ url_for('content.overview', source_name=source, track=track) }}">{{ track }}</a> /
+    <span>{{ lesson.meta.title }}</span>
+</nav>
+
+<h1>{{ lesson.meta.title }}</h1>
+
+{% if lesson.meta.description %}
+    <p style="color: var(--text-soft); font-style: italic;">{{ lesson.meta.description }}</p>
+{% endif %}
+
+{% if beschikbare_vertalingen %}
+<div style="margin: 1rem 0; padding: 0.75rem; background: var(--bg-alt); border-radius: 6px; font-size: 0.9rem;">
+    <span>📖 Ook beschikbaar in:</span>
+    {% for taal in beschikbare_vertalingen %}
+        <a href="{{ url_for('content.lesson', source_name=source, track=track, module=module_name, lang=taal) }}" style="margin-left: 0.5rem;">{{ taal }}</a>
+    {% endfor %}
+</div>
+{% endif %}
+
+<div style="margin: 2rem 0;">
+    {{ html_content | safe }}
+</div>
+
+{% if lesson.questions %}
+<section id="official-test">
+    <p style="font-size: 0.9rem; color: var(--text-soft);">
+        Voortgang: {{ correct_count }} / {{ total_questions }} goed
+    </p>
+    <h2>📝 Officiële toets</h2>
+
+    {% for q in lesson.questions %}
+    <form method="POST" action="{{ url_for('content.submit_answer') }}" class="question-card" id="{{ q.id }}">
+        <input type="hidden" name="module_slug" value="{{ lesson.module_slug }}">
+        <input type="hidden" name="question_id" value="{{ q.id }}">
+        <input type="hidden" name="source" value="{{ source }}">
+        <input type="hidden" name="track" value="{{ track }}">
+        <input type="hidden" name="module" value="{{ module_name }}">
+
+        <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
+
+        {% set saved = answer_map.get(q.id) %}
+
+        {% if q.type == "mcq" %}
+            {% for option in q.options %}
+            <label class="question-option">
+                <input type="radio" name="{{ q.id }}" value="{{ option.id }}">
+                <span>{{ option.text }}</span>
+            </label>
+            {% endfor %}
+
+        {% elif q.type == "truefalse" %}
+            <label class="question-option">
+                <input type="radio" name="{{ q.id }}" value="true">
+                <span>Waar</span>
+            </label>
+            <label class="question-option">
+                <input type="radio" name="{{ q.id }}" value="false">
+                <span>Niet waar</span>
+            </label>
+
+        {% elif q.type == "open" %}
+            <textarea name="{{ q.id }}" rows="4" placeholder="Typ hier je antwoord...">{% if saved and saved.answer_text %}{{ saved.answer_text }}{% endif %}</textarea>
+        {% endif %}
+
+        <button type="submit" class="btn" style="margin-top: 0.8rem;">
+            {% if q.type == "open" %}Antwoord opslaan{% else %}Controleer antwoord{% endif %}
+        </button>
+
+        {% if saved %}
+        <div class="feedback-box">
+            {% if saved.is_correct %}
+                ✅ Goed antwoord
+            {% elif q.type == "open" %}
+                📝 Antwoord opgeslagen
+            {% else %}
+                ❌ Nog niet goed
+            {% endif %}
+        </div>
+        {% endif %}
+    </form>
+    {% endfor %}
+</section>
+{% endif %}
+
+<script>
+// Verberg de officiële toets tot de oefenmodus is voltooid
+document.addEventListener('DOMContentLoaded', function() {
+    var hasOefen = document.querySelector('[id$="-oefen"]');
+    var toets = document.getElementById('official-test');
+    var lock = document.getElementById('toets-lock');
+
+    if (hasOefen && toets) {
+        toets.style.display = 'none';
+        if (lock) lock.style.display = '';
+    }
+
+    // Globale functie die de lesson.md JS kan aanroepen
+    window.unlockOfficialTest = function() {
+        if (toets) toets.style.display = '';
+        if (lock) lock.style.display = 'none';
+    };
+});
+</script>
+
+<div style="margin-top: 2rem;">
+    <a href="{{ url_for('content.overview', source_name=source, track=track) }}" class="btn btn-secondary">← Terug naar overzicht</a>
+</div>
+{% endblock %}

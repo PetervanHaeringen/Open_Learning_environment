@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Modules toewijzen — {{ user.username }}{% endblock %}
+
+{% block content %}
+<h1>📚 Modules toewijzen aan {{ user.username }}</h1>
+
+<form method="POST">
+    {% for group in all_modules %}
+    <div class="card">
+        <h2>{{ group.source }} / {{ group.track }}</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 0.5rem;">
+            {% for m in group.modules %}
+            <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem; border: 1px solid var(--border); border-radius: 4px; cursor: pointer;">
+                <input type="checkbox" name="module_slug" value="{{ m.module_slug }}"
+                    {% if m.module_slug in assigned %}checked{% endif %}>
+                <span>
+                    <strong>{{ m.title }}</strong><br>
+                    <span style="font-size: 0.8rem; color: var(--text-soft);">{{ m.module_slug }}</span>
+                </span>
+            </label>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn">💾 Toewijzingen opslaan</button>
+    <a href="{{ url_for('admin.index') }}" class="btn btn-secondary">← Terug naar admin</a>
+</form>
+{% endblock %}

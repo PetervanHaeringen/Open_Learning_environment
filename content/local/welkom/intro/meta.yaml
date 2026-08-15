@@ -1,0 +1,25 @@
+id: local.welkom.intro
+track_id: welkom
+slug: intro
+title: Welkom bij OpenGarden
+order: 1
+level: beginner
+status: active
+version: 1.0.0
+estimated_minutes: 15
+
+description: >
+  Een kennismaking met OpenGarden: hoe het werkt, hoe je lessen maakt,
+  en hoe je dit framework voor jouw school kunt inrichten.
+
+learning_objectives:
+  - Begrijpen hoe OpenGarden lessen laadt uit YAML en Markdown
+  - Weten waar je content plaatst
+  - Je eerste eigen module kunnen aanmaken
+
+prerequisites: []
+
+tags:
+  - intro
+  - opengarden
+  - handleiding

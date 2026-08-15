@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Mijn Tuin{% endblock %}
+
+{% block content %}
+<h1>🌿 Mijn Tuin</h1>
+<p>Welkom terug, <strong>{{ user.username }}</strong>.</p>
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0;">
+    <div class="card" style="text-align: center;">
+        <div style="font-size: 2rem; font-weight: 600; color: var(--accent);">{{ done_count }} / {{ total }}</div>
+        <div style="font-size: 0.85rem; color: var(--text-soft);">modules afgerond</div>
+    </div>
+</div>
+
+{% if steps %}
+<div style="margin-top: 1.5rem;">
+    {% for step in steps %}
+    <div style="display: flex; align-items: center; gap: 1rem; padding: 12px 0; border-bottom: 1px solid var(--border);
+                {% if step.locked %}opacity: 0.4;{% endif %}">
+        <div style="width: 30px; text-align: center;">
+            {% if step.status == 'done' %}✅{% elif step.status == 'progress' %}🌱{% else %}🫘{% endif %}
+        </div>
+        <div style="flex: 1;">
+            {% if step.locked %}
+                <strong>{{ step.name }}</strong>
+                <span style="font-size: 0.8rem; color: var(--text-soft);">(vergrendeld)</span>
+            {% else %}
+                <a href="{{ step.url }}" style="color: var(--text); text-decoration: none;">
+                    <strong>{{ step.name }}</strong>
+                </a>
+            {% endif %}
+        </div>
+        <div style="width: 120px;">
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ step.pct }}%;"></div>
+            </div>
+        </div>
+        <div style="width: 50px; text-align: right; font-size: 0.85rem; color: var(--text-soft);">{{ step.pct }}%</div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="card" style="text-align: center; color: var(--text-soft);">
+    <p>Er zijn nog geen modules beschikbaar.</p>
+    <p>Voeg content toe in de <code>content/</code> map en herstart de app.</p>
+</div>
+{% endif %}
+{% endblock %}

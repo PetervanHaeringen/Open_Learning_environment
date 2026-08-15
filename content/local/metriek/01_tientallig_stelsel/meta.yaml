@@ -1,0 +1,11 @@
+id: local.metriek.01_tientallig_stelsel
+title: "Het Tientallig Stelsel"
+order: 1
+level: "beginner"
+status: "published"
+description: "Leer hoe elk cijfer een plaatswaarde vertegenwoordigt en wat de komma betekent."
+tags: ["metriek", "tientallig", "plaatswaarde"]
+learning_objectives:
+  - "Elk cijfer in een getal stelt een macht van 10 voor"
+  - "De komma scheidt positieve en negatieve machten van 10"
+  - "Vermenigvuldigen met 10, 100, 1000 verschuift de komma"

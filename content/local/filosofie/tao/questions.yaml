@@ -1,0 +1,37 @@
+questions:
+  - id: "local.filosofie.tao.q01"
+    type: mcq
+    prompt: "Wat betekent 'wu wei' in de Taoistische filosofie?"
+    options:
+      - id: a
+        text: "Luiheid en het vermijden van werk"
+      - id: b
+        text: "Niet-forceren, meegaan met de natuurlijke stroom"
+      - id: c
+        text: "Streng discipline handhaven"
+      - id: d
+        text: "Alles volgens plan uitvoeren"
+    answer: b
+    hint: "Denk aan het beeld van water dat om rotsen heen stroomt."
+    explanation: "Wu wei betekent 'niet-doen' in de zin van 'niet forceren'. Het is actief meegaan met wat er al is, zoals water dat zijn weg vindt."
+
+  - id: "local.filosofie.tao.q02"
+    type: truefalse
+    prompt: "De TAO leert ons dat het beste ontwerp het meest complexe ontwerp is."
+    answer: false
+    explanation: "De TAO waardeert eenvoud. 'De TAO die beschreven kan worden, is niet de eeuwige TAO' — ware elegantie zit in wat niet weggelaten kan worden, niet in wat toegevoegd is."
+
+  - id: "local.filosofie.tao.q03"
+    type: open
+    prompt: "Beschrijf een moment in je werk of studie waar je beter had kunnen 'meestromen' in plaats van forceren."
+    sample_answer: |
+      Ik wilde een lesplan in een keer perfect hebben. Ik bleef er maar aan sleutelen
+      en werd gefrustreerd. Pas toen ik het losliet en het aan een collega liet zien,
+      kwamen de verbeteringen vanzelf — niet door dwingen, maar door delen.
+    keywords:
+      - "forceren"
+      - "meestromen"
+      - "loslaten"
+      - "natuurlijk"
+      - "balans"
+    explanation: "Er is geen fout antwoord. De vraag nodigt uit om zelf te reflecteren — dat is waar de TAO pas echt leeft."

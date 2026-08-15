@@ -1,0 +1,25 @@
+id: "local.filosofie.tao"
+track_id: "filosofie"
+slug: "tao"
+title: "De TAO als ontwerpbeginsel"
+order: 1
+level: beginner
+status: active
+version: "1.0.0"
+estimated_minutes: 20
+
+description: >
+  Wat heeft een 2500 jaar oud filosofisch begrip te maken met hoe wij vandaag
+  software, onderwijs en samenwerking ontwerpen? Meer dan je denkt.
+
+learning_objectives:
+  - "Het begrip 'wu wei' (niet-forceren) kunnen toepassen op ontwerpkeuzes"
+  - "Herkennen waar natuurlijke patronen technische oplossingen sterker maken"
+
+prerequisites: []
+
+tags:
+  - "filosofie"
+  - "tao"
+  - "ontwerp"
+  - "natuur"

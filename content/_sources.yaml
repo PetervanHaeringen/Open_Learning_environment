@@ -1,0 +1,5 @@
+sources:
+  - name: local
+    type: local
+    path: ./local
+    namespace: local

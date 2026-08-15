@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+
+{% block content %}
+<h1>👤 Gebruikersbeheer</h1>
+
+<table>
+    <tr>
+        <th>Gebruiker</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Acties</th>
+    </tr>
+    {% for u in users %}
+    <tr>
+        <td>{{ u.username }}</td>
+        <td>{{ u.email }}</td>
+        <td><strong>{{ u.role }}</strong></td>
+        <td>
+            <a href="{{ url_for('admin.set_role', username=u.username, role='student') }}">student</a> |
+            <a href="{{ url_for('admin.set_role', username=u.username, role='teacher') }}">teacher</a> |
+            <a href="{{ url_for('admin.set_role', username=u.username, role='admin') }}">admin</a> |
+            <a href="{{ url_for('admin.assign_form', username=u.username) }}">📚 toewijzen</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="card" style="margin-top: 2rem;">
+    <h3>Eerste admin maken</h3>
+    <p>Registreer een account, log in, en bezoek dan handmatig:
+    <code>/admin/set-role/jouw-naam/admin</code></p>
+</div>
+{% endblock %}

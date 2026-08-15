@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Registreren{% endblock %}
+
+{% block content %}
+<h1>Registreren</h1>
+
+<form method="POST">
+    <label>
+        Gebruikersnaam:
+        <input type="text" name="username" required autofocus>
+    </label>
+    <label>
+        E-mail:
+        <input type="email" name="email" required>
+    </label>
+    <label>
+        Wachtwoord:
+        <input type="password" name="password" required>
+    </label>
+    <button type="submit" class="btn">Account maken</button>
+</form>
+
+<p style="margin-top: 1rem;">Heb je al een account? <a href="{{ url_for('auth.login') }}">Log in</a></p>
+{% endblock %}

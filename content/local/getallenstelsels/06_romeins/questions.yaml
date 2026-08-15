@@ -1,0 +1,53 @@
+questions:
+  - id: q1
+    type: mcq
+    text: "Welk Romeins cijfer staat voor 50?"
+    options:
+      - id: a
+        text: "X"
+      - id: b
+        text: "L"
+      - id: c
+        text: "C"
+      - id: d
+        text: "V"
+    answer: "b"
+
+  - id: q2
+    type: mcq
+    text: "Wat is de decimale waarde van CXXVII?"
+    options:
+      - id: a
+        text: "117"
+      - id: b
+        text: "127"
+      - id: c
+        text: "137"
+      - id: d
+        text: "147"
+    answer: "b"
+
+  - id: q3
+    type: truefalse
+    text: "In het Romeinse stelsel staat de positie van een cijfer voor de waarde (zoals in ons stelsel)."
+    answer: false
+
+  - id: q4
+    type: mcq
+    text: "Waarom is rekenen met Romeinse cijfers moeilijker dan met ons stelsel?"
+    options:
+      - id: a
+        text: "Omdat er te veel cijfers zijn"
+      - id: b
+        text: "Omdat het geen positiestelsel is"
+      - id: c
+        text: "Omdat de cijfers te groot zijn"
+      - id: d
+        text: "Omdat er geen nul is"
+    answer: "b"
+
+  - id: q5
+    type: open
+    text: "Leg uit waarom het tientallig positiestelsel zo veel handiger is dan het Romeinse stelsel."
+    keywords: ["positie", "plaatswaarde", "rekenen", "makkelijk", "komma"]
+    min_keywords: 2

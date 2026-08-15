@@ -1,0 +1,12 @@
+id: local.getallenstelsels.00_tientallig_stelsel
+title: "Het Tientallig Stelsel"
+order: 0
+level: "beginner"
+status: "published"
+description: "De basis van alles: ons dagelijkse stelsel met 10 cijfers. Waarom juist 10?"
+tags: ["getallenstelsels", "tientallig", "basis 10", "positiestelsel"]
+learning_objectives:
+  - "Begrijpen dat het tientallig stelsel slechts één van de vele mogelijke stelsels is"
+  - "De plaatswaarden en de komma in het tientallig stelsel beheersen"
+  - "Vermenigvuldigen en delen met 10, 100, 1000 als komma-verschuiving zien"
+  - "De basis leggen voor het vergelijken met andere stelsels"

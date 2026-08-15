@@ -1,0 +1,12 @@
+id: local.getallenstelsels.01_binair
+title: "Het Binaire Stelsel"
+order: 1
+level: "beginner"
+status: "published"
+description: "Leer hoe computers denken: alles is aan of uit. Van bits naar bytes."
+tags: ["getallenstelsels", "binair", "computer", "bits"]
+learning_objectives:
+  - "Begrijpen dat binair slechts 2 cijfers gebruikt: 0 en 1"
+  - "De plaatswaarden in binair kennen (1, 2, 4, 8, 16, 32, 64, 128)"
+  - "Decimale getallen omzetten naar binair en andersom"
+  - "Weten wat een byte is (8 bits)"

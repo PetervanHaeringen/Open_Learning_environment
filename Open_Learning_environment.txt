@@ -1,0 +1,35 @@
+git config --global user.email "jpvanhaeringen@onderzoek47.nl"
+git config --global user.name "jpvanhaeringen"
+
+
+token voor open_learning_environment:
+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
+
+
+
+
+
+
+
+
+
+
+
+
+
+import sys
+import os
+os.environ['MAIL_USERNAME'] = 'jpvanhaeringen@onderzoek47.nl'
+os.environ['MAIL_PASSWORD'] = 'Zonnetje47!'
+os.environ['GITHUB_TOKEN']  = ''
+os.environ['GITHUB_OWNER']  = 'jpvanhaeringen'
+os.environ['GITHUB_REPO']   = ''
+os.environ['GITHUB_BRANCH'] = 'main'
+
+path = '/home/PetervanHaeringen/Testgarden_git'
+if path not in sys.path:
+    sys.path.append(path)
+
+import os
+os.environ['SECRET_KEY'] = ''
+from app import app as application

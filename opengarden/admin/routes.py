@@ -5,7 +5,8 @@ from opengarden.auth.utils import login_required
 from opengarden.extensions import db
 from opengarden.models import User, UserModule
 from opengarden.content_loader import load_sources, get_all_tracks, load_track_modules
-
+from opengarden.sync_manager import sync_source, get_sync_status
+from opengarden.content_loader import load_sources
 
 def admin_required(f):
     @wraps(f)
@@ -110,3 +111,27 @@ def assign_save(username):
     db.session.commit()
     flash(f"Toewijzingen voor {username} bijgewerkt.", "success")
     return redirect(url_for("admin.assign_form", username=username))
+
+
+@admin_bp.route("/sources")
+@login_required
+@admin_required
+def sources_overview():
+    """Toon alle bronnen met sync-status."""
+    all_sources = []
+    for source in load_sources():
+        info = dict(source)
+        status, detail = get_sync_status(source["name"])
+        info["sync_status"] = status
+        info["sync_detail"] = detail
+        all_sources.append(info)
+    return render_template("admin/sources.html", sources=all_sources)
+
+
+@admin_bp.route("/sync/<source_name>")
+@login_required
+@admin_required
+def sync_git_source(source_name):
+    success, message = sync_source(source_name)
+    flash(message, "success" if success else "danger")
+    return redirect(url_for("admin.sources_overview"))

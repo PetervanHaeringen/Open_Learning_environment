@@ -1,5 +1,31 @@
-"__pycache__/" 
-"*.pyc" 
-"instance/" 
-".env" 
-"venv/" 
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Flask / instance
+instance/
+!instance/.gitkeep
+
+# Gekloonde Git-bronnen (runtime, niet in versiebeheer)
+content/external/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db

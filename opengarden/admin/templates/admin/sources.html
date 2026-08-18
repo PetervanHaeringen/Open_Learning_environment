@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>🌐 Content-bronnen</h2>
+<p class="text-muted">
+    Lokale content staat altijd op de server. Git-bronnen worden handmatig gesynchroniseerd.
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Naam</th>
+            <th>Type</th>
+            <th>Namespace</th>
+            <th>Pad</th>
+            <th>Status</th>
+            <th>Actie</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in sources %}
+        <tr>
+            <td><strong>{{ s.name }}</strong></td>
+            <td>
+                {% if s.type == "git" %}
+                    <span class="badge badge-info">Git</span>
+                {% else %}
+                    <span class="badge badge-secondary">Lokaal</span>
+                {% endif %}
+            </td>
+            <td><code>{{ s.namespace }}</code></td>
+            <td><code>{{ s.local_path or s.path or s.name }}</code></td>
+            <td>
+                {% if s.sync_status == "synced" %}
+                    <span class="badge badge-success">✓ {{ s.sync_detail }}</span>
+                {% elif s.sync_status == "not_cloned" %}
+                    <span class="badge badge-warning">⚠ {{ s.sync_detail }}</span>
+                {% elif s.sync_status == "local" %}
+                    <span class="badge badge-secondary">Lokaal</span>
+                {% else %}
+                    <span class="badge badge-danger">✗ {{ s.sync_detail }}</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if s.type == "git" %}
+                    <a href="{{ url_for('admin.sync_git_source', source_name=s.name) }}"
+                       class="btn btn-sm btn-outline-primary">
+                        🔄 Sync
+                    </a>
+                {% else %}
+                    <span class="text-muted">—</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="alert alert-light border mt-4">
+    <strong>Tip:</strong> Klik op <em>Sync</em> om de laatste versie van een Git-bron binnen te halen.
+    De app herstart niet — nieuwe content is direct zichtbaar.
+</div>
+{% endblock %}

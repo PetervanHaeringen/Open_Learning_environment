@@ -21,6 +21,7 @@
             <a href="{{ url_for('admin.set_role', username=u.username, role='teacher') }}">teacher</a> |
             <a href="{{ url_for('admin.set_role', username=u.username, role='admin') }}">admin</a> |
             <a href="{{ url_for('admin.assign_form', username=u.username) }}">📚 toewijzen</a>
+            <a href="{{ url_for('admin.sources_overview') }}">🌐 Content-bronnen</a>
         </td>
     </tr>
     {% endfor %}

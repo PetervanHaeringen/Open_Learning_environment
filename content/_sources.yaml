@@ -1,5 +1,12 @@
+# content/_sources.yaml
 sources:
   - name: local
     type: local
     path: ./local
     namespace: local
+
+  - name: testgarden_official
+    type: git
+    url: https://github.com/PetervanHaeringen/testgarden-content.git
+    local_path: external/tg
+    namespace: tg

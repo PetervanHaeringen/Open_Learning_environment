@@ -3,9 +3,15 @@ from flask import Flask, render_template
 from opengarden.config import Config
 from opengarden.extensions import db
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # project root
 
 def create_app(config_class=Config):
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(
+        __name__,
+        instance_relative_config=True,
+        static_folder=os.path.join(BASE_DIR, "static"),
+        static_url_path="/static",
+    )
     app.config.from_object(config_class)
 
     os.makedirs(app.instance_path, exist_ok=True)

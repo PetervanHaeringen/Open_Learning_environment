@@ -42,8 +42,7 @@
         <input type="hidden" name="track" value="{{ track }}">
         <input type="hidden" name="module" value="{{ module_name }}">
 
-        <!-- FIX: ondersteun zowel "prompt" (TestGarden-stijl) als "text" (oud) -->
-        <p><strong>{{ loop.index }}. {{ q.prompt or q.text }}</strong></p>
+        <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
 
         {% set saved = answer_map.get(q.id) %}
 

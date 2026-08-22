@@ -24,48 +24,13 @@ def load_sources():
     return data.get("sources", [])
 
 
-def _get_source_namespace(source_name):
-    """
-    Haal de namespace op voor een bron uit _sources.yaml.
-    Fallback naar source_name zelf als geen namespace is geconfigureerd.
-    """
-    for source in load_sources():
-        if source["name"] == source_name:
-            return source.get("namespace", source_name)
-    return source_name
-
-
-def _resolve_slug(source_name, track, module, meta=None):
-    """
-    Bepaal de canonieke module slug.
-
-    Volgorde van prioriteit:
-      1. meta["id"]           → bijv. "developer.m01"  (TestGarden-stijl)
-      2. meta["legacy_slug"]  → nooduitgang voor oude yaml
-      3. namespace.track.module → bijv. "local.getallenstelsels.00_tientallig"
-
-    De namespace komt uit _sources.yaml (veld 'namespace'), met fallback
-    naar de bronnaam zelf. Zo blijven bestaande lokale modules werken
-    zonder expliciete id, en krijgen geïmporteerde repo's hun eigen
-    prefix als de auteur dat niet expliciet in meta.yaml heeft gezet.
-    """
-    if meta:
-        if meta.get("id"):
-            return meta["id"]
-        if meta.get("legacy_slug"):
-            return meta["legacy_slug"]
-
-    namespace = _get_source_namespace(source_name)
-    return f"{namespace}.{track}.{module}"
-
-
 def get_source_dir(source_name):
     """Bepaal het pad op schijf voor een bron."""
     for source in load_sources():
         if source["name"] == source_name:
             if source["type"] == "local":
                 raw_path = source["path"]
-                # Strip leading ./ or .\ (Windows)
+                # Strip leading ./ or .\\ (Windows)
                 if raw_path.startswith("./") or raw_path.startswith(".\\"):
                     raw_path = raw_path[2:]
                 return CONTENT_DIR / raw_path
@@ -104,8 +69,7 @@ def _strip_leading_h1(markdown_content):
 def load_lesson(source_name, track, module, lang=None):
     """
     Laadt een module: metadata, lesinhoud en vragen.
-    De module_slug wordt bepaald door _resolve_slug() op basis van
-    meta.id, meta.legacy_slug, of namespace.track.module als fallback.
+    De module_slug is altijd: source.track.module
     """
     source_dir = get_source_dir(source_name)
     if not source_dir:
@@ -143,8 +107,7 @@ def load_lesson(source_name, track, module, lang=None):
             qdata = yaml.safe_load(f) or {}
             questions = qdata.get("questions", [])
 
-    # === GEWIJZIGD: gebruik _resolve_slug voor canonieke identiteit ===
-    module_slug = _resolve_slug(source_name, track, module, meta)
+    module_slug = f"{source_name}.{track}.{module}"
 
     return {
         "meta": meta,
@@ -176,16 +139,13 @@ def load_track_modules(source_name, track):
         with open(meta_path, "r", encoding="utf-8") as f:
             meta = yaml.safe_load(f) or {}
 
-        # === GEWIJZIGD: gebruik _resolve_slug voor canonieke identiteit ===
-        module_slug = _resolve_slug(source_name, track, module_dir.name, meta)
-
         modules.append({
             "folder": module_dir.name,
             "title": meta.get("title", module_dir.name),
             "order": meta.get("order", 999),
             "level": meta.get("level", ""),
             "status": meta.get("status", "active"),
-            "module_slug": module_slug,
+            "module_slug": f"{source_name}.{track}.{module_dir.name}",
         })
 
     return sorted(modules, key=lambda m: m["order"])
